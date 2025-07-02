@@ -3,37 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Моє портфоліо</title>
+  <title>Портфоліо Софії</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 1rem; }
-    header { text-align: center; margin-bottom: 2rem; }
-    h1 { color: #2c3e50; }
-    section { margin-bottom: 1.5rem; }
-    a { color: #2980b9; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f9ff;
+      color: #2c3e50;
+    }
+    header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    h2 {
+      color: #4a90e2;
+      border-bottom: 2px solid #cce0ff;
+      padding-bottom: 0.5rem;
+    }
+    .projects a {
+      display: inline-block;
+      margin: 0.5rem 0;
+      padding: 0.5rem 1rem;
+      background-color: #4a90e2;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+    .projects a:hover {
+      background-color: #3a78c2;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 1rem;
+      color: #777;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Привіт, я Софія</h1>
-    <p>Full‑Stack Developer (у процесі навчання)</p>
+    <h1>Привіт, я Софія </h1>
+    <p>Майбутній Full‑Stack розробник</p>
   </header>
+
   <section>
     <h2>Про мене</h2>
-    <p>Я захоплююсь веб‑розробкою, люблю створювати сучасні сайти і прагну працювати в IT.</p>
+    <p>Я почала вивчати веброзробку та створюю власне портфоліо. Моя мета — вступити до школи Codecool у 2026 році та працювати в IT.</p>
   </section>
+
   <section>
     <h2>Мої проєкти</h2>
-    <ul>
-      <li><a href="#">Проєкт 1 — сайт-візитка</a></li>
-      <li><a href="#">Проєкт 2 — ToDo додаток</a></li>
-      <li><a href="#">Проєкт 3 — Калькулятор</a></li>
-    </ul>
+    <div class="projects">
+      <a href="#">Проєкт 1 — Сайт-візитка</a><br />
+      <a href="#">Проєкт 2 — Калькулятор</a><br />
+      <a href="#">Проєкт 3 — ToDo список</a>
+    </div>
   </section>
+
   <section>
     <h2>Контакти</h2>
-    <p>Email: sony.0.2.5.2024@gmailcom</p>
+    <p>Email: sony.0.2.5.2024@gmail.com</p>
     <p>GitHub: <a href="https://github.com/Sitsinsska-Sofia" target="_blank">github.com/Sitsinsska-Sofia</a></p>
   </section>
+
+  <footer>
+    &copy; 2025 Софія Сіцінська. Всі права захищені.
+  </footer>
 </body>
 </html>
