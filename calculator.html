@@ -31,18 +31,19 @@
       border-radius: 5px;
       box-sizing: border-box;
     }
-    .buttons button {
-      width: 23%;
-      height: 40px;
-      margin: 1%;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      background-color: #4a90e2;
-      color: white;
-      transition: background-color 0.3s;
-    }
+    .buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.buttons button {
+  height: 50px;
+  font-size: 1.3rem;
+}
+.buttons button.clear-btn {
+  grid-column: span 4;
+  background-color: #e74c3c;
+}
     .buttons button:hover {
       background-color: #357ABD;
     }
@@ -52,28 +53,28 @@
   <div class="calculator">
     <input type="text" id="display" readonly />
     <div class="buttons">
-      <button onclick="appendNumber('7')">7</button>
-      <button onclick="appendNumber('8')">8</button>
-      <button onclick="appendNumber('9')">9</button>
-      <button onclick="setOperation('+')">+</button>
+  <button onclick="appendNumber('7')">7</button>
+  <button onclick="appendNumber('8')">8</button>
+  <button onclick="appendNumber('9')">9</button>
+  <button onclick="setOperation('+')">+</button>
 
-      <button onclick="appendNumber('4')">4</button>
-      <button onclick="appendNumber('5')">5</button>
-      <button onclick="appendNumber('6')">6</button>
-      <button onclick="setOperation('-')">-</button>
+  <button onclick="appendNumber('4')">4</button>
+  <button onclick="appendNumber('5')">5</button>
+  <button onclick="appendNumber('6')">6</button>
+  <button onclick="setOperation('-')">-</button>
 
-      <button onclick="appendNumber('1')">1</button>
-      <button onclick="appendNumber('2')">2</button>
-      <button onclick="appendNumber('3')">3</button>
-      <button onclick="setOperation('*')">*</button>
+  <button onclick="appendNumber('1')">1</button>
+  <button onclick="appendNumber('2')">2</button>
+  <button onclick="appendNumber('3')">3</button>
+  <button onclick="setOperation('*')">*</button>
 
-      <button onclick="appendNumber('0')">0</button>
-      <button onclick="appendDot()">.</button>
-      <button onclick="calculateResult()">=</button>
-      <button onclick="setOperation('/')">/</button>
+  <button onclick="appendNumber('0')">0</button>
+  <button onclick="appendDot()">.</button>
+  <button onclick="calculateResult()">=</button>
+  <button onclick="setOperation('/')">/</button>
 
-      <button onclick="clearDisplay()" style="width: 98%;">Очистити</button>
-    </div>
+  <button onclick="clearDisplay()" class="clear-btn">Очистити</button>
+  </div>
   </div>
 
   <script>
