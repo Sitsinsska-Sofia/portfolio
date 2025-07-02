@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Калькулятор</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f9ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .calculator {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    input[type="text"] {
+      width: 100%;
+      height: 40px;
+      font-size: 1.5rem;
+      padding: 5px 10px;
+      margin-bottom: 10px;
+      text-align: right;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .buttons button {
+      width: 23%;
+      height: 40px;
+      margin: 1%;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #4a90e2;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    .buttons button:hover {
+      background-color: #357ABD;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" readonly />
+    <div class="buttons">
+      <button onclick="appendNumber('7')">7</button>
+      <button onclick="appendNumber('8')">8</button>
+      <button onclick="appendNumber('9')">9</button>
+      <button onclick="setOperation('+')">+</button>
+
+      <button onclick="appendNumber('4')">4</button>
+      <button onclick="appendNumber('5')">5</button>
+      <button onclick="appendNumber('6')">6</button>
+      <button onclick="setOperation('-')">-</button>
+
+      <button onclick="appendNumber('1')">1</button>
+      <button onclick="appendNumber('2')">2</button>
+      <button onclick="appendNumber('3')">3</button>
+      <button onclick="setOperation('*')">*</button>
+
+      <button onclick="appendNumber('0')">0</button>
+      <button onclick="appendDot()">.</button>
+      <button onclick="calculateResult()">=</button>
+      <button onclick="setOperation('/')">/</button>
+
+      <button onclick="clearDisplay()" style="width: 98%;">Очистити</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById('display');
+    let currentOperation = null;
+    let firstOperand = null;
+    let waitingForSecondOperand = false;
+
+    function appendNumber(number) {
+      if (waitingForSecondOperand) {
+        display.value = number;
+        waitingForSecondOperand = false;
+      } else {
+        display.value = display.value === '0' ? number : display.value + number;
+      }
+    }
+
+    function appendDot() {
+      if (!display.value.includes('.')) {
+        display.value += '.';
+      }
+    }
+
+    function setOperation(operator) {
+      if (currentOperation && waitingForSecondOperand) {
+        currentOperation = operator;
+        return;
+      }
+      if (firstOperand === null) {
+        firstOperand = parseFloat(display.value);
+      } else if (currentOperation) {
+        let result = performCalculation(currentOperation, firstOperand, parseFloat(display.value));
+        display.value = String(result);
+        firstOperand = result;
+      }
+      currentOperation = operator;
+      waitingForSecondOperand = true;
+    }
+
+    function performCalculation(operation, first, second) {
+      switch(operation) {
+        case '+': return first + second;
+        case '-': return first - second;
+        case '*': return first * second;
+        case '/': return second === 0 ? 'Помилка' : first / second;
+        default: return second;
+      }
+    }
+
+    function calculateResult() {
+      if (currentOperation === null || waitingForSecondOperand) return;
+      let result = performCalculation(currentOperation, firstOperand, parseFloat(display.value));
+      display.value = String(result);
+      currentOperation = null;
+      firstOperand = null;
+      waitingForSecondOperand = false;
+    }
+    function clearDisplay() {
+      display.value = '';
+      currentOperation = null;
+      firstOperand = null;
+      waitingForSecondOperand = false;
+    }
+
+    clearDisplay();
+  </script>
+</body>
+</html>
